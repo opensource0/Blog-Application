@@ -1,0 +1,56 @@
+<html lang="en" dir="ltr">
+{% load static %}
+{% load staticfiles %}
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+   </head>
+   <body>
+     <nav>
+       <div class="nav-wrapper" id='special'>
+         <g class="brand-logo">Blogs</g>
+         <ul id="nav-mobile" class="right hide-on-med-and-down">
+           <li><a href="/">Home</a></li>
+
+           {% if request.path == '/' or  request.path == '/addBlog/' or request.path == '/changePassword/' %}
+           {% if user.is_authenticated %}
+           <li><a href="/addBlog">Add Blog</a></li>
+           <li><a href="/logout">Logout</a></li>
+           <li><a href='/changePassword'>Change Password</a></li>
+
+           <li><a href='/'>Hello {{user.first_name}}</a></li>
+           {% else %}
+           <li><a href="/register">Register</a></li>
+           <li><a href="/login">Login</a></li>
+           {% endif %}
+           {% endif %}
+
+           {% if request.path == '/login/'%}
+           {% if user.is_authenticated %}
+           <li><a href="/addBlog">Add Blog</a></li>
+           <li><a href="/changePassword">Change Password</a></li>
+
+
+
+           <li><a href="/logout">Logout</a></li>
+           <li><a href='/'>Hello {{user.first_name}}</a></li>
+           {% else %}
+           <li><a href='/register'>Register</a></li>
+           {% endif %}
+           {% elif request.path == '/register/' %}
+           <li><a href="/login">Login</a></li>
+           {% else %}
+           <!-- <li>Else Not Found</li> -->
+           {% endif %}
+         </ul>
+       </div>
+     </nav>
+     {% block content %}
+     {% endblock %}
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   </body>
+   </html>

@@ -1,0 +1,40 @@
+{% extends 'testapp/header.html' %}
+{% block content %}
+<head>
+  <title>Register</title>
+</head>
+    <div class="container">
+      {% for msg in messages%}
+      <div class="alert alert-warning" role="alert">
+          {{msg}}
+     </div>
+     {% endfor %}
+      <div>
+        <div class="jumbotron">
+          <h1 class="display-4">Welcome To SignUp</h1>
+          <p class="lead">Create  Your Account And Enjoy Blog Posting</p>
+          <hr class="my-4">
+          <p>Get One Touch With World</p>
+        </div>
+        <form method='POST'>
+            {% csrf_token %}
+          <div class="form-row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="First Name" name='fname' /required><br>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="User Name" name='username' /required><br>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Email" name='email' /required><br>
+            </div>
+            <div class="col">
+              <input type="password" class="form-control" placeholder="Password" name='password' /required><br>
+              Already Have An Account<a href="/login">&nbspSign Up?</a><br>
+              <center><input class="btn btn-primary" type="submit" value="Submit"><center><br/><br/
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'testapp/header.html' %}
+{% block content %}
+<head>
+  <title>Add Blog</title>
+</head>
+<div class="container">
+  {% for msg in messages%}
+  <div class="alert alert-warning" role="alert">
+      {{msg}}
+    </div>
+ {% endfor %}
+
+     <div class="blog-container">
+       <form method='POST'>
+         {% csrf_token %}
+         <div>
+           <input type="text" class="form-control" placeholder="Title" name='title' /required><br>
+           <input type="text" class="form-control" placeholder="User Name : {{user.username}}" name='author' /required><br>
+           <textarea type='text' name="text" class='form-control' placeholder='Content' rows="10" cols="50"></textarea><br><br>
+           <center><input class="btn btn-primary" type="submit" value="Submit"><center><br/><br/>
+           </div>
+     </form>
+    </div>
+</div>
+ {% endblock %}

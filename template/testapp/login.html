@@ -1,0 +1,32 @@
+{% extends 'testapp/header.html' %}
+{% block content %}
+<head>
+  <title>Login</title>
+</head>
+    <div class="container">
+      {% for msg in messages%}
+      <div class="alert alert-warning" role="alert">
+          {{msg}}
+     </div>
+     {% endfor %}
+    <div class="jumbotron">
+      <h1 class="display-4">Welcome To Login</h1>
+      <p class="lead">Login To Your Account And Enjoy Blog Reading</p>
+      <hr class="my-4">
+      <p>Share Your Idea With World</p>
+    </div>
+    <form method='POST'>
+      {% csrf_token %}
+      <div class="form-row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="User Name" name='username' /required><br>
+        </div>
+        <div class="col">
+          <input type="password" class="form-control" placeholder="Password" name='password' /required><br/>
+          <a href="/forgotPassword">Forgot Password</a>
+          <center><input class="btn btn-primary" type="submit" value="Submit"><center><br/><br/>
+          </div>
+        </div>
+      </form>
+    </div>
+  {% endblock %}

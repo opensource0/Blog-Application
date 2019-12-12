@@ -1,0 +1,27 @@
+{% extends 'testapp/header.html' %}
+{% block content %}
+<head>
+  <title>Home Page </title>
+</head>
+<div class="container">
+  {% for msg in messages%}
+  <div class="alert alert-warning" role="alert">
+      {{msg}}
+ </div>
+ {% endfor %}
+  <div class="jumbotron">
+    <div class="page-header centerdiv">
+      <h1>Blog Articles</h1>
+    </div>
+    {% for blog in blogs %}
+    <div class="blog-content ">
+      <div class="page-header">
+        <h3>{{blog.title}}</h3>
+        <h6>{{blog.author}}</h6>
+      </div>
+      {{blog.text}}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
